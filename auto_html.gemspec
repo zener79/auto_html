@@ -14,6 +14,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'tag_helper', '~> 0.2'
   gem.add_dependency 'rinku',      '~> 1.7'
 
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'test-unit'
+
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
                   'README*', 'LICENSE'] & `git ls-files -z`.split("\0")
 end
