@@ -1,9 +1,4 @@
 require 'rubygems'
+require 'test/unit'
 
-require 'active_record'
-require 'action_view'
-require 'active_support/core_ext/class'
-gem 'minitest'
-require 'minitest/autorun'
-
-require File.dirname(__FILE__) + '/../init'
+require File.dirname(__FILE__) + '/../lib/auto_html'

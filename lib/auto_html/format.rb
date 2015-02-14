@@ -1,6 +1,6 @@
 require 'banzai'
 
 module AutoHtml
-  class Filter < Banzai::Filter
+  class Format < Banzai::Pipeline
   end
 end

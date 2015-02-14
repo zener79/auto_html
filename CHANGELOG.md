@@ -1,3 +1,9 @@
+## 2.0.0, WIP
+* New, breaking API
+* Filters cleanup
+
+## 1.6.5, WIP
+
 ## 1.6.4, released 2014-04-11
 * New filter: youtube image filter 
 
@@ -15,7 +21,7 @@
 * Fix gist filter - add type attribute
 
 ## 1.6.1, released 2014-01-05
-* Permit auto_html_for on an attribute that's not in the DB.
+* Permit auto_html_for on an attribute that is not in the DB.
 * Image filter: :proxy option, do not format existing <img> 
 * Link filter: :short_link_name option
 * GoogleMap filter: support for all countries (domains)

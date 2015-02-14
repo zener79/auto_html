@@ -1,9 +1,19 @@
-AutoHtml.add_filter(:html_escape).with(
-  :map => { 
-    '&' => '&amp;',  
-    '>' => '&gt;',
-    '<' => '&lt;',
-    '"' => '&quot;' }) do |text, options|
+# TODO: https://github.com/brianmario/escape_utils
+module AutoHtml
+  class HtmlEscape < Filter
 
-  text.to_s.gsub(/[&"><]/) { |special| options[:map][special] }
+    def call(text)
+      text.to_s.gsub(/[&"><]/) { |special| map[special] }
+    end
+
+    def map
+      @map ||= {
+        '&' => '&amp;',
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '&quot;'
+      }
+    end
+
+  end
 end

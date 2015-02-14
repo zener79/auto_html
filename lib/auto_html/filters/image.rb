@@ -1,16 +1,13 @@
-require 'redcarpet'
+require 'tag_helper'
 
-class NoParagraphRenderer < ::Redcarpet::Render::XHTML
-  def paragraph(text)
-    text
-  end
-end
-
-AutoHtml.add_filter(:image).with({:alt => ''}) do |text, options|
-  r = Redcarpet::Markdown.new(NoParagraphRenderer)
-  alt = options[:alt]
-  options[:proxy] ||= ""
-  text.gsub(/(?<!src=")https?:\/\/.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
-    r.render("![#{alt}](#{options[:proxy]}#{match})")
+module AutoHtml
+  class Image < Filter
+    def call(text)
+      alt = options[:alt] || ''
+      proxy = options[:proxy] || ''
+      text.gsub(/(?<!src=")https?:\/\/.+?\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
+        TagHelper.image_tag(proxy + match, :alt => alt)
+      end
+    end
   end
 end
