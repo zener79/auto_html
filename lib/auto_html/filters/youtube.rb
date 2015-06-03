@@ -14,6 +14,10 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
     params << "autoplay=1" if autoplay
     params << "rel=0" if hide_related
     src += "?#{params.join '&'}" unless params.empty?
-    %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
+    if options[:iubenda]
+      %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="data:text/html;base64,PGh0bWw+PGJvZHk+U3VwcHJlc3NlZDwvYm9keT48L2h0bWw+"  suppressedsrc="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
+    else
+      %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
+    end
   end
 end
